@@ -10,7 +10,6 @@ servers:
 paths:
   /posts/{id}:
     get:
-      summary: Get a post by ID
       operationId: getPostById
       parameters:
         - name: id
