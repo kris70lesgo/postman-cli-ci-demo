@@ -1,0 +1,23 @@
+name: Postman CLI Collection Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  postman-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Postman Collection via CLI
+        uses: postmanlabs/postman-cli-action@v1
+        with:
+          command: >
+            collection run 46698537-e7b13419-c156-4d0a-b651-9d22039e5b02
+            --bail
+            --suppress-exit-code
+          api-key: ${{ secrets.POSTMAN_API_KEY }}
