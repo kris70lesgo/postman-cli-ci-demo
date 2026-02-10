@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info:
+  title: Example SaaS API
+  version: 1.0.0
+  description: API contract for a sample SaaS service
+
+servers:
+  - url: https://jsonplaceholder.typicode.com
+
+paths:
+  /posts/{id}:
+    get:
+      summary: Get a post by ID
+      operationId: getPostById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Post retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: integer
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  body:
+                    type: string
+        '404':
+          description: Post not found
